@@ -38,7 +38,7 @@ export default function AppNavbar() {
           <ul className="navbar-nav ml-auto">
             <li className="nav-link">
               <i className="fas fa-user" />
-              <Link to="/login" className="link">
+              <Link to="/signup" className="link">
                 Sign Up
               </Link>
             </li>

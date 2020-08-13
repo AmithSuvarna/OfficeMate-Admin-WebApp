@@ -1,0 +1,12 @@
+.signup {
+    /* border-color: black;
+    border: solid; */
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5% 35% 5% 35%;
+}
+
+h3 {
+    text-align: center
+}
