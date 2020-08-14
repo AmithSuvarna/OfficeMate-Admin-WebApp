@@ -20,7 +20,7 @@ export default function AppNavbar() {
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
           <ul className="navbar-nav">
             <li className="nav-item nav-link">
-              <Link to="/" className="link">
+              <Link to="/order" className="link">
                 Home
               </Link>
             </li>
