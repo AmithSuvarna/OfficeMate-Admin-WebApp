@@ -25,12 +25,12 @@ export default function AppNavbar() {
               </Link>
             </li>
             <li className="nav-item nav-link">
-              <Link to="/login" className="link">
+              <Link to="/" className="link">
                 Category
               </Link>
             </li>
             <li className="nav-item nav-link">
-              <Link to="/login" className="link">
+              <Link to="/" className="link">
                 About
               </Link>
             </li>
