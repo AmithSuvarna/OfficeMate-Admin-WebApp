@@ -24,10 +24,26 @@ export default function AppNavbar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item nav-link">
-              <Link to="/" className="link">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link  dropdown-toggle"
+                href="#"
+                data-toggle="dropdown"
+              >
                 Category
-              </Link>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Office Supplies
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    School Supplies{" "}
+                  </a>
+                </li>
+              </ul>
             </li>
             <li className="nav-item nav-link">
               <Link to="/" className="link">
@@ -38,7 +54,7 @@ export default function AppNavbar() {
           <ul className="navbar-nav ml-auto">
             <li className="nav-link">
               <i className="fas fa-user" />
-              <Link to="/login" className="link">
+              <Link to="/signup" className="link">
                 Sign Up
               </Link>
             </li>
