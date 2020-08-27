@@ -1,30 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
+import auth from "../login/auth";
+import { AppContext } from "../appContext/appContext";
+import { withRouter } from "react-router-dom";
 
-export default function AppNavbar() {
+function Header({ history }) {
+  const [isLoggdIn, setIsLoggedIn] = useContext(AppContext);
+
+  const onClickBrand = () => {
+    if (isLoggdIn) {
+      history.push("/login");
+    } else {
+      history.push("/");
+    }
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-md bg-dark navbar-dark">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" onClick={onClickBrand}>
           Office Mate
         </a>
-        {/* <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button> */}
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
           <ul className="navbar-nav">
             <li className="nav-item nav-link">
-              <Link to="/" className="link">
-                Home
+              <Link to="/order" className="link">
+                Orders
               </Link>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item nav-link">
+              <Link to="/products" className="link">
+                Products
+              </Link>
+            </li>
+            {/* <li class="nav-item dropdown">
               <a
                 class="nav-link  dropdown-toggle"
                 href="#"
@@ -44,29 +54,42 @@ export default function AppNavbar() {
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className="nav-item nav-link">
-              <Link to="/" className="link">
-                About
+              <Link to="/offers" className="link">
+                Offers
               </Link>
             </li>
           </ul>
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-link">
-              <i className="fas fa-user" />
-              <Link to="/signup" className="link">
-                Sign Up
-              </Link>
-            </li>
-            <li className="nav-link">
-              <i className="fas fa-sign-in-alt" />
-              <Link to="/login" className="link">
-                Login
-              </Link>
-            </li>
-          </ul>
+          {!isLoggdIn ? (
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-link">
+                <i className="fa fa-user" />
+                <Link to="/signup" className="link">
+                  Sign Up
+                </Link>
+              </li>
+              <li className="nav-link">
+                <i className="fa fa-sign-in" />
+                <Link to="/login" className="link">
+                  Login
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-link">
+                <i className="fa fa-sign-out" />
+                <Link to="/" className="link">
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
     </div>
   );
 }
+
+export default withRouter(Header);
