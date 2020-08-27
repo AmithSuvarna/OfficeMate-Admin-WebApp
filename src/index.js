@@ -2,13 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import Routing from "./components/router/routing";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+// Importing the Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+import App from "./components/app/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routing />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

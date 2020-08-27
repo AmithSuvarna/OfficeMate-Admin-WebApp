@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./login.css";
+import { withRouter } from "react-router-dom";
+import auth from "./auth";
+import { AppContext } from "../appContext/appContext";
 
-export default function Login() {
+function Login({ history }) {
+  const [isLoggdIn, setIsLoggedIn] = useContext(AppContext);
+  const onLogin = () => {
+    console.log("Before: " + isLoggdIn);
+    setIsLoggedIn(true);
+    console.log("After: " + isLoggdIn);
+    history.push(`/order`);
+  };
   return (
     <form className="login">
       <h3>Sign In</h3>
@@ -32,12 +42,18 @@ export default function Login() {
         </div>
       </div>
 
-      <button type="submit" className="btn btn-primary btn-block">
+      <button
+        type="submit"
+        className="btn btn-primary btn-block"
+        onClick={onLogin}
+      >
         Sign In
       </button>
       {/* <p className="forgot-password text-right">
-          Forgot <a>password?</a>
+          Forgot <a>password?</a> context.isLoggedIn.set(true)
         </p> */}
     </form>
   );
 }
+
+export default Login;
