@@ -10,7 +10,7 @@ function Header({ history }) {
 
   const onClickBrand = () => {
     if (isLoggdIn) {
-      history.push("/login");
+      history.push("/order");
     } else {
       history.push("/");
     }
@@ -18,8 +18,8 @@ function Header({ history }) {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-md bg-dark navbar-dark">
-        <a className="navbar-brand" onClick={onClickBrand}>
+      <nav className="navbar navbar-expand-md bg-dark navBackground">
+        <a className="navbar-brand brandColor" onClick={onClickBrand}>
           Office Mate
         </a>
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
@@ -64,13 +64,13 @@ function Header({ history }) {
           {!isLoggdIn ? (
             <ul className="navbar-nav ml-auto">
               <li className="nav-link">
-                <i className="fa fa-user" />
+                <i className="fa fa-user iconColor" />
                 <Link to="/signup" className="link">
                   Sign Up
                 </Link>
               </li>
               <li className="nav-link">
-                <i className="fa fa-sign-in" />
+                <i className="fa fa-sign-in iconColor" />
                 <Link to="/login" className="link">
                   Login
                 </Link>
@@ -79,7 +79,7 @@ function Header({ history }) {
           ) : (
             <ul className="navbar-nav ml-auto">
               <li className="nav-link">
-                <i className="fa fa-sign-out" />
+                <i className="fa fa-sign-out iconColor" />
                 <Link to="/" className="link">
                   Logout
                 </Link>

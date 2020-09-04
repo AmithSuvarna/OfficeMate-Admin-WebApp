@@ -7,8 +7,17 @@ export default function ProductList(props) {
   const onClickEdit = () => {
     props.onEditClick(props.item);
   };
+
+  const onDelete = () => {
+    console.log("Delete");
+  };
+
   return (
-    <div className="row product">
+    <div
+      className={`row ${
+        props.item.InventoryCount > 5 ? "product" : "redProduct"
+      }`}
+    >
       <div className="col">
         <label>
           <strong>Product Name: </strong>
@@ -42,7 +51,7 @@ export default function ProductList(props) {
             <a
               class="fa fa-trash icon"
               aria-hidden="true"
-              onClick={onClickEdit}
+              onClick={onDelete}
             ></a>
           </OverlayTrigger>
         </div>
