@@ -1,0 +1,43 @@
+{
+  "cartPhase": "ORDER_COMPLETE",
+  "currency": "USD",
+  "subtotal": 35.98,
+  "discountAmount": 0,
+  "taxAmount": 0,
+  "grandTotal": 35.98,
+  "orderId": "123ABC",
+  "emailAddress": "example@example.com",
+  "cartUrl": "http://brontogear.com/",
+  "shippingAmount": 7.99,
+  "shippingDate": "05 - 18 - 2018",
+  "shippingDetails": "FedEx",
+  "shippingTrackingUrl": "http://fedex.com/tracking/NIeX3KYLcPhgRzKy",
+  "lineItems": [
+    {
+      "sku": "576879",
+      "name": "Shirt",
+      "description": "A super great description of the product",
+      "category": "Shirts > T-Shirts > Blue",
+      "other": "This can be any string value you like",
+      "unitPrice": 11.99,
+      "salePrice": 11.99,
+      "quantity": 2,
+      "totalPrice": 23.98,
+      "imageUrl": "http://brontogear.com/a/p/shirt.jpeg",
+      "productUrl": "http://brontogear.com/index.php/shirt.html"
+    },
+    {
+      "sku": "1112296",
+      "name": "Fleece Jacket",
+      "description": "A well appointed Fleece jacket",
+      "category": "Jackets > Winter > Fleece",
+      "other": "This can be any string value you like",
+      "unitPrice": 65.99,
+      "salePrice": 55.5,
+      "quantity": 1,
+      "totalPrice": 55.5,
+      "imageUrl": "http://brontogear.com/a/p/fleece.jpeg",
+      "productUrl": "http://brontogear.com/index.php/fleece.html"
+    }
+  ]
+}

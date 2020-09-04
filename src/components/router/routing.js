@@ -22,8 +22,8 @@ export default function Routing() {
         <Route path="/" exact component={Home}></Route>
         <ProtectedRoute path="/order" component={OrdersTable}></ProtectedRoute>
         <ProtectedRoute path="/offers" component={Offers}></ProtectedRoute>
-        {/* <ProtectedRoute path="/products" component={Products}></ProtectedRoute> */}
-        <Route path="/products" component={Products}></Route>
+        <ProtectedRoute path="/products" component={Products}></ProtectedRoute>
+        {/* <Route path="/products" component={Products}></Route> */}
         <Route path="/login" component={Login}></Route>
         <Route path="/signup" component={Signup}></Route>
       </Switch>
