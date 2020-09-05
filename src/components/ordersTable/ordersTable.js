@@ -1,107 +1,94 @@
-import React, { Component } from "react";
+import React, { useState, Suspense } from "react";
 import "./ordersTable.css";
-import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
+import ReactSearchBox from "react-search-box";
+import { EditOrders } from "../modals/editOrders";
+import { AddOrders } from "../modals/addOrders";
+import orderListData from "../../jsonData/orders.json";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+const OrdertList = React.lazy(() => import("./orderList"));
 
-const products = [
-    { id: '1', amount: '100', status: 'Dispatched', createdDate: '09/02/2020', createdBy: 'Dave', UpdatedBy: 'Bob', updatedDate: '10/02/2020', isDeleted: 'No', modeOfPayment: 'Cash' },
-    { id: '2', amount: '1200', status: 'Shipped', createdDate: '11/08/2020', createdBy: 'Adam', UpdatedBy: 'Eve', updatedDate: '12/08/2020', isDeleted: 'No', modeOfPayment: 'NetBanking' },
-    { id: '3', amount: '300', status: 'Dispatched', createdDate: '28/08/2020', createdBy: 'Ben', UpdatedBy: 'Ben', updatedDate: '29/08/2020', isDeleted: 'Yes', modeOfPayment: 'Paytm' },
-    { id: '4', amount: '240', status: 'Dispatched', createdDate: '29/11/2020', createdBy: 'Sita', UpdatedBy: 'Ram', updatedDate: '29/11/2020', isDeleted: 'No', modeOfPayment: 'GPay' },
-    { id: '5', amount: '100', status: 'Dispatched', createdDate: '09/02/2020', createdBy: 'Dave', UpdatedBy: 'Bob', updatedDate: '10/02/2020', isDeleted: 'No', modeOfPayment: 'Cash' },
-    { id: '6', amount: '1200', status: 'Shipped', createdDate: '11/08/2020', createdBy: 'Adam', UpdatedBy: 'Eve', updatedDate: '12/08/2020', isDeleted: 'No', modeOfPayment: 'NetBanking' },
-    { id: '7', amount: '300', status: 'Dispatched', createdDate: '28/08/2020', createdBy: 'Ben', UpdatedBy: 'Ben', updatedDate: '29/08/2020', isDeleted: 'Yes', modeOfPayment: 'Paytm' },
-    { id: '8', amount: '240', status: 'Dispatched', createdDate: '29/11/2020', createdBy: 'Sita', UpdatedBy: 'Ram', updatedDate: '29/11/2020', isDeleted: 'No', modeOfPayment: 'GPay' },
-    { id: '9', amount: '100', status: 'Dispatched', createdDate: '09/02/2020', createdBy: 'Dave', UpdatedBy: 'Bob', updatedDate: '10/02/2020', isDeleted: 'No', modeOfPayment: 'Cash' },
-    { id: '10', amount: '1200', status: 'Shipped', createdDate: '11/08/2020', createdBy: 'Adam', UpdatedBy: 'Eve', updatedDate: '12/08/2020', isDeleted: 'No', modeOfPayment: 'NetBanking' },
-    { id: '11', amount: '300', status: 'Dispatched', createdDate: '28/08/2020', createdBy: 'Ben', UpdatedBy: 'Ben', updatedDate: '29/08/2020', isDeleted: 'Yes', modeOfPayment: 'Paytm' },
-    { id: '12', amount: '240', status: 'Dispatched', createdDate: '29/11/2020', createdBy: 'Sita', UpdatedBy: 'Ram', updatedDate: '29/11/2020', isDeleted: 'No', modeOfPayment: 'GPay' }
-]
+export default function Orders() {
+  const [category, setCategory] = useState("All");
+  const [searchValue, setSearchvalue] = useState("");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showAddModal, setAddEditModal] = useState(false);
+  const [editOrders, setEditOrders] = useState([]);
 
-const columns = [{
-    dataField: 'id',
-    text: 'Order ID',
-    sort: true
-}, {
-    dataField: 'amount',
-    text: 'Order Amount'
-}, {
-    dataField: 'status',
-    text: 'Order Status'
-},
-{
-    dataField: 'createdDate',
-    text: 'Created Date',
-    sort: true
-},
-{
-    dataField: 'createdBy',
-    text: 'Created By'
-},
-{
-    dataField: 'UpdatedBy',
-    text: 'Updated By'
-},
-{
-    dataField: 'updatedDate',
-    text: 'Updated Date',
-    sort: true
-},
-{
-    dataField: 'isDeleted',
-    text: 'IsDeleted'
-},
-{
-    dataField: 'modeOfPayment',
-    text: 'Mode Of Payment'
-}];
+  const onEditOrders = (order) => {
+    setEditOrders(order);
+    setShowEditModal(true);
+  };
 
-const selectRow = {
-    mode: 'checkbox',
-    clickToSelect: true
-};
+  const onAddOrders = () => {
+    setAddEditModal(true);
+  };
 
-const expandRow = {
-    renderer: row => (
-        <div>
-            <p>{`This Expand row is belong to rowKey ${row.id}`}</p>
-            <p>You can render anything here, also you can add additional data on every row object</p>
-            <p>expandRow.renderer callback will pass the origin row object to you</p>
-        </div>
-    ),
-    showExpandColumn: true,
-    expandColumnPosition: 'right',
-    expandHeaderColumnRenderer: ({ isAnyExpands }) => {
-        if (isAnyExpands) {
-            return <b>-</b>;
-        }
-        return <b>+</b>;
-    },
-    expandColumnRenderer: ({ expanded }) => {
-        if (expanded) {
-            return (
-                <b>-</b>
-            );
-        }
-        return (
-            <b>...</b>
-        );
+  const handleClose = () => {
+    setShowEditModal(false);
+  };
+
+  const handleAddClose = () => {
+    setAddEditModal(false);
+  };
+
+  const loadOrders = (e) => {
+    setCategory(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const onSearch = (value) => {
+    if (value.length >= 3) {
+      console.log(value);
     }
-};
+  };
 
-export default class OrdersTable extends Component {
-    render() {
-        return (
-            <div className="container" style={{ marginTop: 50 }}>
-                <BootstrapTable
-                    striped
-                    keyField='id'
-                    data={products}
-                    columns={columns}
-                    selectRow={selectRow}
-                    expandRow={expandRow}
-                    pagination={ paginationFactory() } />
-            </div>
-        );
-    }
+  const orderList = orderListData.map((data) => (
+    <OrdertList item={data} onEditClick={onEditOrders}></OrdertList>
+  ));
+
+  return (
+    <div>
+      <div className="addOrders">
+        <OverlayTrigger
+          key="addOrder"
+          overlay={<Tooltip id="addOrdersToolTip">Add Order</Tooltip>}
+        >
+          <a
+            class="fa fa-plus icon"
+            aria-hidden="true"
+            onClick={onAddOrders}
+          ></a>
+        </OverlayTrigger>
+      </div>
+      <div className="offerDiv">
+        <label>
+          Select Category:
+          <select value={category} onChange={loadOrders} className="dropdown">
+            <option value="All">All</option>
+            <option value="OfficeSupplies">Office Supplies</option>
+            <option value="SchoolSupplies">School Supplies</option>
+            <option value="PaperProducts">Paper Products</option>
+            <option value="PrintingService">Printing Service</option>
+            <option value="CleaningProducts">Cleaning Products</option>
+          </select>
+        </label>
+      </div>
+      <div className="searchBar">
+        <ReactSearchBox
+          placeholder="Search by order name"
+          value=""
+          onChange={onSearch}
+        />
+      </div>
+      <div>
+        <Suspense fallback={<div>Loading...</div>}>{orderList}</Suspense>
+      </div>
+      <EditOrders
+        show={showEditModal}
+        data={editOrders}
+        onHide={handleClose}
+      ></EditOrders>
+      <AddOrders show={showAddModal} onHide={handleAddClose}></AddOrders>
+    </div>
+  );
 }
