@@ -1,0 +1,49 @@
+.searchBar {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    padding: 5px;
+  }
+  
+  .order {
+    margin-left: 10.3%;
+    margin-right: 10.3%;
+    margin-top: 1%;
+    padding: 5px;
+    border: 1px solid #bbb;
+    background-color: #eee;
+  }
+  
+  .redOrder {
+    margin-left: 10.3%;
+    margin-right: 10.3%;
+    margin-top: 1%;
+    padding: 5px;
+    border: 1px solid #bbb;
+    background-color: #f46666;
+  }
+  
+  .dropdown {
+    margin-left: 10px;
+  }
+  
+  .editIcon {
+    /* position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px; */
+    float: right;
+  }
+  
+  .icon {
+    padding: 5px;
+    text-decoration: none;
+  }
+  
+  .addOrders {
+    float: right;
+    margin-left: 10%;
+    margin-right: 11%;
+    margin-top: 2%;
+  }
+  

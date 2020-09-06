@@ -1,18 +1,4 @@
-{
-  "cartPhase": "ORDER_COMPLETE",
-  "currency": "USD",
-  "subtotal": 35.98,
-  "discountAmount": 0,
-  "taxAmount": 0,
-  "grandTotal": 35.98,
-  "orderId": "123ABC",
-  "emailAddress": "example@example.com",
-  "cartUrl": "http://brontogear.com/",
-  "shippingAmount": 7.99,
-  "shippingDate": "05 - 18 - 2018",
-  "shippingDetails": "FedEx",
-  "shippingTrackingUrl": "http://fedex.com/tracking/NIeX3KYLcPhgRzKy",
-  "lineItems": [
+[
     {
       "sku": "576879",
       "name": "Shirt",
@@ -23,7 +9,7 @@
       "salePrice": 11.99,
       "quantity": 2,
       "totalPrice": 23.98,
-      "imageUrl": "http://brontogear.com/a/p/shirt.jpeg",
+      "imageUrl": "https://contents.mediadecathlon.com/p1484240/ab565f3675dbdd7e3c486175e2c16583/p1484240.jpg",
       "productUrl": "http://brontogear.com/index.php/shirt.html"
     },
     {
@@ -36,8 +22,8 @@
       "salePrice": 55.5,
       "quantity": 1,
       "totalPrice": 55.5,
-      "imageUrl": "http://brontogear.com/a/p/fleece.jpeg",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81CWm9Wgx6L._AC_UX342_.jpg",
       "productUrl": "http://brontogear.com/index.php/fleece.html"
     }
   ]
-}
+
